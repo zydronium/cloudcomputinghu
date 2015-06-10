@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jumbotron Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet" />
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Sollicitatie</a>
+          <a class="navbar-brand" href="2a.html">2A</a>
+          <a class="navbar-brand" href="2b.html">2B</a>
+          <a class="navbar-brand" href="3a.html">3A</a>
+          <a class="navbar-brand" href="3b.html">3B</a>
+          <a class="navbar-brand" href="4a.html">4A</a>
+          <a class="navbar-brand" href="4b.html">4B</a>
+          <a class="navbar-brand" href="5a.html">5A</a>
+          <a class="navbar-brand" href="5b.html">5B</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <!-- Example row of columns -->
+	  <div class="row">
+		<div class="col-md-12">
+                    <h1>2B</h1>
+                    <h2>Vragen</h2>
+                    <p>
+                        <strong>1:</strong><br />
+                        Buiten functies om <strong>var {variable name}</strong> gebruiken.
+                    </p>
+                    <p>
+                        <strong>2:</strong><br />
+                        Events zijn acties die de browser en/of de gebruiker uitvoeren. Event handler zijn stukken javascript die uitgevoer worden als een event wordt getriggerd.<br />
+                        Voorbeeld:<br />
+                        onclick="addnumber()"
+                    </p>
+                    <p>
+                        <strong>3:</strong><br />
+                        Javascript kan worden toegepast door gebruik te maken van de verschillende events.<br />
+                        In moderne webapplicaties die op basis van jquery werken wordt de javascript code vaak pas toegepast als de pagina is ingeladen (dit is een event).<br />
+                        Vervolgens worden er javascript acties aan events gehangen.
+                    </p>
+                    <p>
+                        <strong>4:</strong><br />
+                        <ul>
+                            <li>search: Hier kan je een string zoeken in een andere string</li>
+                            <li>substr: hiermree kan je een gedeelte uit een string halen door op te geven waar te beginnen en hoelang de nieuwe string moet zijn.</li>
+                            <li>lastIndexOf: geeft aan wanneer een string voor het laats is voorgekomen, de positie. Geeft -1 terug als het 0 keer gevonden is.</li>
+                        </ul>
+                    </p>
+                    <h2>Uitwerkingen</h2>
+                    1:<br />
+                    <a href="javascript:drukAf('blabla')">Click here</a><br />
+                    Parameter: <span id="parameter">parameters</span><br />
+                    2:<br />
+                    <a href="javascript:rekenen(10,2)">rekenen</a><br />
+                    3:<br />
+                    <a href="javascript:delenVermenigvuldigen(10,2)">delen en vermenigvuldigen</a><br />
+                    4:<br />
+                    <a href="javascript:modulus(10,2)">modulus</a><br />
+                    5:<br />
+                    <label class="big_label">Naam:</label>
+                    <input type="text" id="naam" class="big_input" />
+                    <div class="float_clear"></div>
+                    <label class="big_label">nummer 1:</label>
+                    <input type="text" id="nummer1" class="big_input" />
+                    <div class="float_clear"></div>
+                    <label class="big_label">nummer 2:</label>
+                    <input type="text" id="nummer2" class="big_input" />
+                    <div class="float_clear"></div>
+                    <button onclick="submit()">uitvoeren</button><br />
+                    6:<br />
+                    <div id="hukleurtjes">Kleurtjes :D</div><br />
+                    <button onclick="huColors()">kleuren</button><br />
+                    7:<br />
+                    <a href="tekenen.html">Tekenen!</a>
+		</div>
+	  </div>
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>-->
+        
+    <script>
+        var hucolor = 1;
+        
+        function drukAf(x) {
+            document.getElementById("parameter").innerHTML = x;
+        }
+
+        function rekenen(a, b) {
+            a = a * 1;
+            b = b * 1;
+
+            var sum = a + b;
+            drukAf(sum);
+        }
+
+        function delenVermenigvuldigen(a, b) {
+            var vermenigvuldigen = a * b;
+            var delen = a / b;
+            drukAf(vermenigvuldigen + " - " + delen);
+        }
+
+        function modulus(a, b) {
+            var mod = a % b;
+            drukAf(mod);
+        }
+        function submit() {
+            var para;
+            var endPara = "";
+            var naam = document.getElementById("naam").value;
+
+            endPara = endPara + naam;
+
+            rekenen(document.getElementById("nummer1").value,document.getElementById("nummer2").value);
+            para = document.getElementById("parameter").innerHTML;
+            endPara = endPara + " | " + para;
+
+            delenVermenigvuldigen(document.getElementById("nummer1").value,document.getElementById("nummer2").value);
+            para = document.getElementById("parameter").innerHTML;
+            endPara = endPara + " | " + para;
+
+            document.getElementById("parameter").innerHTML = endPara;
+        }
+        
+        function huColors() {
+            var divvar = document.getElementById( 'hukleurtjes' );
+            switch(hucolor) {
+                case 1:
+                    hucolor++;
+                    divvar.style.backgroundColor = 'blue';
+                    break;
+                case 2:
+                    hucolor++;
+                    divvar.style.backgroundColor = 'red';
+                    break;
+                case 3:
+                    hucolor++;
+                    divvar.style.backgroundColor = '';
+                    break;
+                default:
+                    alert('Ja doei, ik blijf niet eeuwig een toverbal nadoen');
+            } 
+        }
+    </script>
+  </body>
+</html>

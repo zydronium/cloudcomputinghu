@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jumbotron Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet" />
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Sollicitatie</a>
+          <a class="navbar-brand" href="2a.html">2A</a>
+          <a class="navbar-brand" href="2b.html">2B</a>
+          <a class="navbar-brand" href="3a.html">3A</a>
+          <a class="navbar-brand" href="3b.html">3B</a>
+          <a class="navbar-brand" href="4a.html">4A</a>
+          <a class="navbar-brand" href="4b.html">4B</a>
+          <a class="navbar-brand" href="5a.html">5A</a>
+          <a class="navbar-brand" href="5b.html">5B</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <!-- Example row of columns -->
+	  <div class="row">
+		<div class="col-md-12">
+                    <h1>2A</h1>
+                    <h2>Vragen</h2>
+                    <p>
+                        <strong>1:</strong><br />
+                        Asynchronous JavaScript and XML, een techniek om met javascript op de achtergrond informatie op te vragen.
+                    </p>
+                    <p>
+                        <strong>2:</strong><br />
+                        De client heeft controle over wanneer de server wordt geraadpleegd en wat er gedaan wordt met de gekregen informatie.<br />
+                        Permanente opslag wordt door de server gedaan.
+                    </p>
+                    <p>
+                        <strong>3:</strong><br />
+                        <ul>
+                            <li>Nieuwe informatie verkrijgen zonder refreshes</li>
+                            <li>Je kan applicaties die native aanvoelen</li>
+                            <li>Minder overhead bij het opvragen van data</li>
+                        </ul>
+                    </p>
+                    <p>
+                        <strong>4:</strong><br />
+                        <ul>
+                            <li>Webcrawlers hebben problemen met het uitvoeren van javascript en dus ook ajax</li>
+                            <li>Als javascript uitgeschakeld is of XMLHttpRequest extensie niet aanwezig is zal ajax niet werken</li>
+                            <li>Doordat ajax asynchroon is kan het lastig zijn bij debuggen</li>
+                        </ul>
+                    </p>
+                    <p>
+                        <strong>5:</strong><br />
+                        JavaScript Object Notation.
+                    </p>
+                    <p>
+                        <strong>6:</strong><br />
+                        XMLHttpRequest is de browser extensie die het mogelijk maakt om met javascript op de achtergrond requests uit te voeren.<br />
+                        De browser extensie is ontworpen door Microosft en was in het begin alleen te gebruiken in Microsoft Internet Explorer.
+                    </p>
+                    <p>
+                        <strong>7:</strong><br />
+                        Protocolen zijn http en https.<br />
+                        Formaten die gebruikt worden staan niet vast, als zijn XML en JSON gangbaar.
+                    </p>
+                    <p>
+                        <strong>8:</strong><br />
+                        <pre>function handler()
+{
+    if (oReq.readyState == 4 /* complete */) {
+        if (oReq.status == 200) {
+            console.log(oReq.responseText);
+        }
+    }
+}
+var oReq = getXMLHttpRequest();
+if (oReq != null) {
+    oReq.open("GET", "http://localhost/test.xml", true);
+    oReq.onreadystatechange = handler;
+    oReq.send();
+}
+else {
+    window.console.log("AJAX (XMLHTTP) not supported.");
+}</pre><br />
+                        Eerst wordt het object aangemaakt en als dat is gelukt wordt een xml pagina geprobeerd op te vragen.<br />
+                        Als dat is gelukt wordt de functie handler() uitgevoerd die het object vervolgens uitleest.
+                    </p>
+                    <p>
+                        <strong>9:</strong><br />
+                        De datastore is een key-value nosql database. Ik moet aangeven onder welke key ik iets wil opslaan met de gewenste value.
+                    </p>
+                    <p>
+                        <strong>9:</strong><br />
+                        Het is een standaard om data persistent data op te slaan door middel van classes met annotaties<br />
+                        Met andere woorden een soort van ORM.
+                    </p>
+                    <h2>Uitwerkingen</h2>
+                    <a href="mytasksmanager">Tasks manager</a>
+		</div>
+	  </div>
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+  </body>
+</html>

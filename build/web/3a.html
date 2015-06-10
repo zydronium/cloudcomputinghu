@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Jumbotron Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet" />
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Sollicitatie</a>
+          <a class="navbar-brand" href="2a.html">2A</a>
+          <a class="navbar-brand" href="2b.html">2B</a>
+          <a class="navbar-brand" href="3a.html">3A</a>
+          <a class="navbar-brand" href="3b.html">3B</a>
+          <a class="navbar-brand" href="4a.html">4A</a>
+          <a class="navbar-brand" href="4b.html">4B</a>
+          <a class="navbar-brand" href="5a.html">5A</a>
+          <a class="navbar-brand" href="5b.html">5B</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <!-- Example row of columns -->
+	  <div class="row">
+		<div class="col-md-12">
+                    <h1>2A</h1>
+                    <h2>Vragen</h2>
+                    <p>
+                        <strong>1:</strong><br />
+                        <ul>
+                            <li>addEventListener</li>
+                            <li>attachEvent</li>
+                        </ul>
+                    </p>
+                    <p>
+                        <strong>2:</strong><br />
+                        <ul>
+                            <li>createCaption(): voegt een tabel titel toe</li>
+                            <li>createTFoot(): maakt een tabel footer aan</li>
+                            <li>createTHead(): maakt een tabel header aan</li>
+                            <li>deleteCaption(): verwijderd een tabel titel</li>
+                            <li>deleteRow(): verwijderd een rij</li>
+                            <li>deleteTFoot(): verwijderd een tabel footer</li>
+                            <li>deleteTHead(): verwijderd een tabel header</li>
+                            <li>insertRow(): voegt een rij toe</li>
+                        </ul>
+                    </p>
+                    <p>
+                        <strong>3:</strong><br />
+                        <ul>
+                            <li>document.getElementById("tafel").value</li>
+                            <li>{form reference}.elements["text_element_name"]</li>
+                        </ul>
+                        Bij de eerste werk je op basis van de id, bij de 2e werk je vanuit de form
+                    </p>
+                    <p>
+                        <strong>4:</strong><br />
+                        <ul>
+                            <li>// voor elke lijn</li>
+                            <li>/*  */ voor meerdere lijnen</li>
+                        </ul>
+                    </p>
+                    <h2>Uitwerkingen</h2>
+                    <a href="startcode3a.html">start code</a>
+		</div>
+	  </div>
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>-->
+        
+    <script>
+    var numbers = [];
+    document.getElementById("numberfield").innerHTML = numbers;
+    var tafel;
+    var maal;
+    
+    function isEven(n) 
+    {
+       return (n % 2 == 0);
+    }
+    
+    function tafels() {
+        tafel = document.getElementById("tafel").value;
+        maal = 10;
+        var uitkomst = "";
+        i = 0;
+        while(i < maal){
+            if(i < 2) {
+                uitkomst = uitkomst + "<span style='background-color: #ffffff;'>";
+            }else if(i < 4){
+                uitkomst = uitkomst + "<span style='background-color: #00CCFF;'>";
+            }else if(i < 6){
+                uitkomst = uitkomst + "<span style='background-color: #0099FF;'>";
+            }else if(i < 8){
+                uitkomst = uitkomst + "<span style='background-color: #0066FF;'>";
+            }else if(i < 10){
+                uitkomst = uitkomst + "<span style='background-color: #0000FF;'>";
+            }
+            i++;
+            if(isEven(i)) {
+                uitkomst = uitkomst + "<strong>"
+            }
+            uitkomst = uitkomst + i + " x " + tafel + " = " + (i * tafel);
+            if(isEven(i)) {
+                uitkomst = uitkomst + "</strong>"; 
+            }
+            uitkomst = uitkomst + "<span><br />";
+        }
+        document.getElementById("tafelUitkomst").innerHTML = uitkomst;
+    }
+
+    function addnumber() {
+        numbers.push(document.getElementById("nummer").value);
+        document.getElementById("numberfield").innerHTML = numbers;
+    }
+
+    function mouseOut(x) {
+        document.getElementById("demo").style.color = "black";
+        document.getElementById("numberfield").innerHTML = numbers;
+    }
+
+    function mouseOver(x) {
+        document.getElementById("demo").style.color = "red";
+        var numbersSort = numbers;
+        numbersSort.sort(function(a, b){
+            if ( a < b )
+                return -1;
+            if ( a > b )
+                return 1;
+            return 0;
+        });
+        document.getElementById("numberfield").innerHTML = numbersSort;
+    }
+    </script>
+  </body>
+</html>

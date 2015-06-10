@@ -1,0 +1,15 @@
+#tabel, #mail, #naam, #studentnr{
+    z-index:0;
+    border: 2px solid #CCCCCC;
+}
+#competenties
+{
+    z-index:3;
+    border: 10px solid #CCCCCC;
+    position:relative;
+    top: 10px;
+    left:0px;
+    width:300px;
+    background-color:white;
+    display:none;
+}

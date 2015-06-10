@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="start()">
+        <input id='color' type='color' /><br /><br />
+        <div id="palet"></div>
+        <script>
+            function start() {
+                var pal = "";
+                pal = pal + "<table>";
+                for (i = 0; i < 100; i++) {
+                    pal = pal + "<tr>";
+                    for (j = 0; j < 100; j++) {
+                        pal = pal + "<td style='width: 3px; height:3px; border: 10px;' onmouseover='kleur(this)'>";
+
+                        pal = pal + "</td>";
+                    }
+                    pal = pal + "</tr>";
+                }
+                pal = pal + "</table>";
+                var divvar = document.getElementById( 'palet' );
+                divvar.innerHTML = pal;
+                
+                //werkt niet goed, heel het document wordt verwijderd...
+                //document.write(pal);
+            }
+            
+            function kleur(x) {
+                var colorinput = document.getElementById( 'color' );
+                x.style.backgroundColor = color.value;
+            }
+        </script>
+    </body>
+</html>

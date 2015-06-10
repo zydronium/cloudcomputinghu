@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3 Demo: Making a bar chart with SVG</title>
+		<script type="text/javascript" src="js/d3.min.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 500;
+			var h = 1000;
+			var barPadding = 1;
+			
+			var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+							11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+            var dataset2 = [
+                {"name" : "Buitenlandse Zaken", "value" : 7.64408},
+                {"name" : "Veiligheid en Justitie", "value" : 13.53330},
+                {"name" : "Binnenlandse Zaken en Koninkrijksrelaties", "value" : 3.83524},
+                {"name" : "Onderwijs, Cultuur en Wetenschap", "value" : 12.32113},
+                {"name" : "Defensie", "value" : 3.26797},
+                {"name" : "Infrastructuur en Milieu", "value" : 2.61273},
+                {"name" : "Economische Zaken", "value" : 127.33810},
+                {"name" : "Sociale Zaken en Werkgelegenheid", "value" : 17.66181},
+                {"name" : "Volksgezondheid, Welzijn en Sport", "value" : 0.72662}
+            ];
+			
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			svg.selectAll("rect")
+			   .data(dataset2)
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+			   		return i * (w / dataset.length);
+			   })
+			   .attr("y", function(d) {
+			   		return h - (d.value * 10);
+			   })
+			   .attr("width", w / dataset.length - barPadding)
+			   .attr("height", function(d) {
+			   		return d.value * 10;
+			   })
+			   .attr("fill", function(d) {
+					return "#"+((Math.round(d.value) * 999) + 100000);
+			   });
+			   svg.selectAll("text")
+				   .data(dataset2)
+				   .enter()
+				   .append("text")
+				   .text(function(d) {
+						return d.name;
+				   })
+				   .attr("x", function(d, i) {
+						return i * (w / dataset.length) + 5;  // +5
+				   })
+				   .attr("y", function(d) {
+						return h - (d.value * 10) - 100;              // +15
+				   })
+				   .attr("font-family", "sans-serif")
+				   .attr("font-size", "11px")
+				   .attr("fill", "black")
+				   .attr("text-anchor", "middle");
+			
+		</script>
+		<p>Kan geen verbinding leggen met statline.cbs.nl voor gegevens</p>
+	</body>
+</html>
