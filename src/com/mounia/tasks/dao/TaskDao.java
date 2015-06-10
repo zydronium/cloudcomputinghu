@@ -42,6 +42,13 @@ public enum TaskDao {
 		return tasks;
 	}
 
+	public List<Task> listTasksByAccount(Account account) {
+		EntityManager em = EMFService.get().createEntityManager();
+		Query q = em.createQuery("select t from Task t where account = '" + account.getAccountId()+"' and status = 'todo'");
+		List<Task> tasks = q.getResultList();
+		return tasks;
+	}
+
 	public Task get(long id) {
 		EntityManager em = EMFService.get().createEntityManager();
                 Task task = null;

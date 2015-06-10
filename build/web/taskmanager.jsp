@@ -154,6 +154,22 @@
                         });
                     });
                 }, 'json');
+                
+                $.get( "feed?type=json", function( data ) {
+                    i = 0;
+                    var items = [];
+                    $.each( data, function( key, val ) {
+                        i++;
+                        if(isEven(i)) {
+                            items.push( "<li id='task" + key + "'><span style='background-color: #00CCFF;'>" + val + "</span></li>" );
+                        }else{
+                            items.push( "<li id='task" + key + "'><span style='background-color: #ffffff;'>" + val + "</span></li>" );
+                        }
+                    });
+
+                    var html = "<ul>" + items.join( "" ) + "</ul>";
+                    $('#feed').html(html);
+                }, 'json');
             }
             
             function startApp() {
@@ -172,7 +188,10 @@
                     +"<input type=\"button\" id=\"submit\" value=\"Submit\" />"
                     +"<br/>"
                     +"<h3>Project list</h3>"
-                    +"<div id=\"open\"></div>");
+                    +"<div id=\"open\"></div>"
+                    +"<h3>Alle openstaande taken</h3>"
+                    +"<div id=\"feed\"></div><br />"
+                    +"<a href=\"feed?type=rss\" target=\"_blank\">RSS feed</a>");
                     $('#submit').click(function() {
                         var name = $('#name').val();
                         var summary = $('#summary').val();
