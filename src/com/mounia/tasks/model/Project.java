@@ -51,7 +51,7 @@ public class Project implements Serializable {
         return AccountDao.INSTANCE.get(this.projectManager);
     }
 
-    public void setEndTime(Account projectManager) {
+    public void setProjectManager(Account projectManager) {
         this.projectManager = projectManager.getAccountId();
     }
 }
