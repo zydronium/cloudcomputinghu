@@ -37,7 +37,7 @@ public enum TaskDao {
 
 	public List<Task> listTasksFromProject(long project) {
 		EntityManager em = EMFService.get().createEntityManager();
-		Query q = em.createQuery("select t from Task t where project = " + project + "");
+		Query q = em.createQuery("select t from Task t where project = " + project);
 		List<Task> tasks = q.getResultList();
 		return tasks;
 	}
@@ -47,6 +47,17 @@ public enum TaskDao {
 		Query q = em.createQuery("select t from Task t where account = '" + account.getAccountId()+"' and status = 'todo'");
 		List<Task> tasks = q.getResultList();
 		return tasks;
+	}
+
+	public List<Task> searchTasks(String name, long project) {
+            String searchString = "select t from Task t where name like '" + name+"%'";
+            if(project != 0) {
+                //searchString = searchString + " and project = "+ project;
+            }
+            EntityManager em = EMFService.get().createEntityManager();
+            Query q = em.createQuery(searchString);
+            List<Task> tasks = q.getResultList();
+            return tasks;
 	}
 
 	public Task get(long id) {

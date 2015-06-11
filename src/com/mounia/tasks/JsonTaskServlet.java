@@ -44,6 +44,13 @@ public class JsonTaskServlet extends HttpServlet {
                         map.put(t.getProjectId().toString(), t.getName() + " manager:" + t.getProjectManager().getName() + " " + t.getSummary());
                     }
                 }
+            } else if (action.equals("projectname")) {
+                List<Project> tasks = ProjectDao.INSTANCE.listProjects();
+                if (tasks != null) {
+                    for (Project t : tasks) {
+                        map.put(t.getProjectId().toString(), t.getName());
+                    }
+                }
             } else if (action.equals("account")) {
                 List<Account> accounts = AccountDao.INSTANCE.listAccounts();
                 if (accounts != null) {
@@ -54,6 +61,15 @@ public class JsonTaskServlet extends HttpServlet {
             } else if (action.equals("task")) {
                 long project = Long.parseLong(request.getParameter("project"));
                 List<Task> tasks = TaskDao.INSTANCE.listTasksFromProject(project);
+                if (tasks != null) {
+                    for (Task t : tasks) {
+                        map.put(t.getTaskId().toString(), t.getName() + " t:" + t.getEndTime() + " owner:" + t.getAccount().getName() + "  " + t.getSummary() + " status: " + t.getStatus());
+                    }
+                }
+            } else if (action.equals("search")) {
+                String name = request.getParameter("name");
+                long project = Long.parseLong(request.getParameter("project"));
+                List<Task> tasks = TaskDao.INSTANCE.searchTasks(name, project);
                 if (tasks != null) {
                     for (Task t : tasks) {
                         map.put(t.getTaskId().toString(), t.getName() + " t:" + t.getEndTime() + " owner:" + t.getAccount().getName() + "  " + t.getSummary() + " status: " + t.getStatus());

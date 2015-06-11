@@ -180,27 +180,59 @@
                         i++;
                         items.push( "<option value='" + key + "'>" + val + "</option>" );
                     });
-
-                    $('#TaskmanagerPlaceholder').html("<h1>Tasks manager</h1><h3>Add project</h3>"
-                    +"<input type=\"text\" placeholder=\"give project name\" id=\"name\" />"
-                    +"<input type=\"text\" placeholder=\"give project summary\" id=\"summary\" />"
-                    +"<select id=\"account\">" + items.join( "" ) + "</ul>"
-                    +"<input type=\"button\" id=\"submit\" value=\"Submit\" />"
-                    +"<br/>"
-                    +"<h3>Project list</h3>"
-                    +"<div id=\"open\"></div>"
-                    +"<h3>Alle openstaande taken</h3>"
-                    +"<div id=\"feed\"></div><br />"
-                    +"<a href=\"feed?type=rss\" target=\"_blank\">RSS feed</a>");
-                    $('#submit').click(function() {
-                        var name = $('#name').val();
-                        var summary = $('#summary').val();
-                        var account = $('#account').val();
-                        $.post( "jsontaskmanager?action=project&name=" + name + "&summary=" + summary + "&account=" + account, function( d ) {
-                            writeProjectToPage();
+                    $.get( "jsontaskmanager?action=projectname", function( data ) {
+                        i = 1;
+                        var searchItems = [];
+                        searchItems.push( "<option value='0'>all projects</option>" );
+                        $.each( data, function( key, val ) {
+                            i++;
+                            searchItems.push( "<option value='" + key + "'>" + val + "</option>" );
                         });
-                    });
-                    writeProjectToPage();
+                        $('#TaskmanagerPlaceholder').html("<h1>Tasks manager</h1><h3>Add project</h3>"
+                        +"<input type=\"text\" placeholder=\"give project name\" id=\"name\" />"
+                        +"<input type=\"text\" placeholder=\"give project summary\" id=\"summary\" />"
+                        +"<select id=\"account\">" + items.join( "" ) + "</ul>"
+                        +"<input type=\"button\" id=\"submit\" value=\"Submit\" />"
+                        +"<br/>"
+                        +"<h3>Project list</h3>"
+                        +"<div id=\"open\"></div>"
+                        +"<h3>Alle openstaande taken</h3>"
+                        +"<div id=\"feed\"></div><br />"
+                        +"<a href=\"feed?type=rss\" target=\"_blank\">RSS feed</a>"
+                        +"<h3>Zoeken</h3>"
+                        +"<input type=\"text\" placeholder=\"give search keyword\" id=\"nameSearch\" />"
+                        +"<select id=\"projectSearch\">" + searchItems.join( "" ) + "</ul>"
+                        +"<input type=\"button\" id=\"search\" value=\"Submit\" /><br />"
+                        +"<div id=\"searchList\"></div>");
+                        $('#submit').click(function() {
+                            var name = $('#name').val();
+                            var summary = $('#summary').val();
+                            var account = $('#account').val();
+                            $.post( "jsontaskmanager?action=project&name=" + name + "&summary=" + summary + "&account=" + account, function( d ) {
+                                writeProjectToPage();
+                            });
+                        });
+                        $('#search').click(function() {
+                            var name = $('#nameSearch').val();
+                            var project = $('#projectSearch').val();
+                            $.get( "jsontaskmanager?action=search&name="+name+"&project="+project, function( data ) {
+                                i = 0;
+                                var items = [];
+                                $.each( data, function( key, val ) {
+                                    i++;
+                                    if(isEven(i)) {
+                                        items.push( "<li id='project" + key + "'><span style='background-color: #00CCFF;'>" + val + "</span></li>" );
+                                    }else{
+                                        items.push( "<li id='project" + key + "'><span style='background-color: #ffffff;'>" + val + "</span></li>" );
+                                    }
+                                });
+
+                                var html = "<ul>" + items.join( "" ) + "</ul>";
+                                $('#searchList').html(html);
+                            }, 'json');
+                        });
+                        writeProjectToPage();
+                    }, 'json');
                 }, 'json');
             }
             
